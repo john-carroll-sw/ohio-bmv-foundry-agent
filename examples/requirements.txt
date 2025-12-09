@@ -1,0 +1,8 @@
+# Azure AI Projects SDK for Agent Service
+azure-ai-projects>=1.0.0
+
+# Azure Identity for authentication
+azure-identity>=1.18.0
+
+# For loading environment variables
+python-dotenv>=1.0.0

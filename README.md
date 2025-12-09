@@ -351,6 +351,11 @@ This POC is designed to be **adaptable**:
 
 ```text
 .
+├── examples/                          # Python code examples for agent setup
+│   ├── create_agent.py               # Example: Create agent with Bing grounding
+│   ├── requirements.txt              # Python dependencies for examples
+│   ├── .env.example                  # Environment variable template
+│   └── README.md                     # Examples documentation
 ├── mcp-server/                        # Git submodule: Azure Functions MCP server
 │   ├── src/
 │   │   └── function_app.py           # MCP tools implementation
@@ -401,12 +406,26 @@ This POC is designed to be **adaptable**:
 
    Follow the prompts to deploy to your Azure subscription.
 
-4. **Configure the Foundry Agent:**
+4. **Create the Azure AI Foundry Agent:**
 
-   - Create a new agent in Azure AI Foundry
-   - Use the system prompt from [prompts/ohio-bmv-agent-system-prompt.md](./prompts/ohio-bmv-agent-system-prompt.md)
-   - Attach the Bing Custom Search grounding
-   - Connect the MCP server endpoint
+   The `examples/` directory contains a complete Python example for creating the agent programmatically:
+
+   ```bash
+   cd examples
+   pip install -r requirements.txt
+   cp .env.example .env
+   # Edit .env with your Azure AI Foundry project details
+   python create_agent.py
+   ```
+
+   This will:
+   - Create an agent with the system prompt from `prompts/ohio-bmv-agent-system-prompt.md`
+   - Attach Bing Custom Search grounding (restricted to official BMV sources)
+   - Return an agent ID for use in your application
+
+   See [examples/README.md](./examples/README.md) for detailed instructions.
+
+   **Alternative:** You can also create the agent manually in the [Azure AI Foundry portal](https://ai.azure.com) by following the UI prompts.
 
 5. **Test the integration:**
 
